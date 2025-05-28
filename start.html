@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Defense Planet - Start</title>
+  <style>
+    body {
+      margin: 0;
+      padding: 0;
+      background: url('img/background.jpg') no-repeat center center/cover;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      height: 100vh;
+      font-family: 'Arial', sans-serif;
+    }
+
+    .start-container {
+      text-align: center;
+      background: rgba(0, 0, 0, 0.5);
+      padding: 40px;
+      border-radius: 20px;
+      box-shadow: 0 0 20px rgba(255, 255, 255, 0.2);
+    }
+
+    h1 {
+      font-size: 3em;
+      color: #fff;
+      margin-bottom: 20px;
+    }
+
+    .start-button {
+      padding: 15px 40px;
+      font-size: 1.2em;
+      background-color: #00bfff;
+      border: none;
+      color: white;
+      border-radius: 10px;
+      cursor: pointer;
+      transition: background-color 0.3s ease;
+    }
+
+    .start-button:hover {
+      background-color: #009acd;
+    }
+  </style>
+</head>
+<body>
+  <div class="start-container">
+    <h1>Defense Planet</h1>
+    <button class="start-button" onclick="startGame()">Start</button>
+  </div>
+
+  <script>
+    function startGame() {
+      window.location.href = "index.html";
+    }
+  </script>
+</body>
+</html>
