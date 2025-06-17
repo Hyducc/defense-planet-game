@@ -1,0 +1,164 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Planet Defense Game</title>
+  <link rel="stylesheet" href="css/main.css">
+  <style>
+    /* Transisi masuk */
+    body {
+      margin: 0;
+      overflow: hidden;
+      font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+      opacity: 0;
+      animation: fadeInBody 0.6s ease forwards;
+    }
+
+    @keyframes fadeInBody {
+      to {
+        opacity: 1;
+      }
+    }
+
+    /* Transisi keluar */
+    body.fade-out {
+      opacity: 0;
+      transition: opacity 0.5s ease;
+    }
+
+    #canvas {
+      display: block;
+    }
+
+    .back-button {
+      position: absolute;
+      top: 20px;
+      left: 20px;
+      z-index: 1000;
+      padding: 18px 50px;
+      font-size: 1.2em;
+      border: none;
+      border-radius: 50px;
+      cursor: pointer;
+      background: linear-gradient(135deg, #00bfff, #1e90ff);
+      color: white;
+      box-shadow: 0 10px 20px rgba(0, 191, 255, 0.3);
+      transition: all 0.3s ease-in-out;
+    }
+
+    .back-button:hover {
+      background: linear-gradient(135deg, #009acd, #187bcd);
+      transform: scale(1.05);
+      box-shadow: 0 12px 25px rgba(0, 191, 255, 0.5);
+    }
+
+    /* Modal Konfirmasi */
+    .confirm-modal {
+      position: fixed;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      background: rgba(0, 0, 0, 0.6);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      z-index: 2000;
+      display: none;
+      animation: fadeInModal 0.4s ease forwards;
+    }
+
+    @keyframes fadeInModal {
+      from { opacity: 0; }
+      to { opacity: 1; }
+    }
+
+    .confirm-box {
+      background: #222;
+      padding: 30px 40px;
+      border-radius: 12px;
+      box-shadow: 0 10px 25px rgba(0,0,0,0.5);
+      color: white;
+      text-align: center;
+      animation: slideUp 0.5s ease;
+    }
+
+    @keyframes slideUp {
+      from { transform: translateY(20px); opacity: 0; }
+      to   { transform: translateY(0); opacity: 1; }
+    }
+
+    .confirm-box p {
+      font-size: 1.2em;
+      margin-bottom: 20px;
+    }
+
+    .confirm-box button {
+      padding: 10px 25px;
+      margin: 0 10px;
+      font-size: 1em;
+      border: none;
+      border-radius: 8px;
+      cursor: pointer;
+      transition: all 0.3s ease;
+    }
+
+    .yes-button {
+      background: #00bfff;
+      color: white;
+    }
+
+    .yes-button:hover {
+      background: #009acd;
+    }
+
+    .no-button {
+      background: #ccc;
+      color: black;
+    }
+
+    .no-button:hover {
+      background: #aaa;
+    }
+  </style>
+</head>
+<body>
+
+  <!-- Tombol kembali -->
+  <button class="back-button" onclick="showConfirm()">⟵ Kembali</button>
+
+  <!-- Canvas game -->
+  <canvas id="canvas"></canvas>
+
+  <!-- Modal Konfirmasi -->
+  <div class="confirm-modal" id="confirmModal">
+    <div class="confirm-box">
+      <p>Apakah kamu yakin ingin kembali ke menu utama?</p>
+      <button class="yes-button" onclick="goBack()">Ya</button>
+      <button class="no-button" onclick="hideConfirm()">Tidak</button>
+    </div>
+  </div>
+
+  <!-- Game script -->
+  <script src="js/main.js"></script>
+
+  <!-- Script popup dan transisi -->
+  <script>
+    function showConfirm() {
+      document.getElementById('confirmModal').style.display = 'flex';
+    }
+
+    function hideConfirm() {
+      document.getElementById('confirmModal').style.display = 'none';
+    }
+
+    function goBack() {
+      document.body.classList.add('fade-out');
+      setTimeout(() => {
+        window.location.href = 'index.html';
+      }, 500);
+    }
+  </script>
+
+</body>
+</html>

@@ -1,0 +1,142 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Defence Planet - Start</title>
+  <style>
+    body {
+      margin: 0;
+      padding: 0;
+      background: url('img/background.jpg') no-repeat center center/cover;
+      font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+      display: flex;
+      flex-direction: column;
+      justify-content: space-between;
+      height: 100vh;
+      color: #fff;
+      position: relative;
+      text-align: center;
+    }
+
+    .header {
+      margin-top: 60px;
+    }
+
+    h1 {
+      font-size: 4em;
+      text-shadow: 2px 2px 8px rgba(0, 0, 0, 0.7);
+      animation: fadeInDown 1s ease;
+    }
+
+    .login-container {
+      background-color: rgba(0, 0, 0, 0.5);
+      padding: 40px;
+      border-radius: 20px;
+      width: 90%;
+      max-width: 400px;
+      margin: 20px auto;
+      box-shadow: 0 8px 30px rgba(0, 0, 0, 0.3);
+      animation: fadeInUp 1.5s ease;
+    }
+
+    input[type="text"] {
+      padding: 15px 20px;
+      font-size: 1.1em;
+      border: none;
+      border-radius: 25px;
+      width: 100%;
+      box-sizing: border-box;
+      outline: none;
+      transition: 0.3s ease;
+    }
+
+    input[type="text"]:focus {
+      box-shadow: 0 0 10px #00bfff;
+      background-color: rgba(255, 255, 255, 0.9);
+      color: #000;
+    }
+
+    .start-button {
+      display: none;
+      margin-top: 25px;
+      padding: 15px 40px;
+      font-size: 1.2em;
+      border: none;
+      border-radius: 50px;
+      cursor: pointer;
+      transition: all 0.3s ease-in-out;
+      background: linear-gradient(135deg, #00bfff, #1e90ff);
+      color: white;
+      box-shadow: 0 10px 20px rgba(0, 191, 255, 0.3);
+    }
+
+    .start-button:hover {
+      background: linear-gradient(135deg, #009acd, #187bcd);
+      transform: scale(1.05);
+      box-shadow: 0 12px 25px rgba(0, 191, 255, 0.5);
+    }
+
+    .footer {
+      text-align: center;
+      padding: 20px;
+      font-size: 0.9em;
+      color: #ccc;
+      text-shadow: 1px 1px 3px rgba(0, 0, 0, 0.5);
+    }
+
+    @keyframes fadeInDown {
+      from {
+        opacity: 0;
+        transform: translateY(-30px);
+      }
+      to {
+        opacity: 1;
+        transform: translateY(0);
+      }
+    }
+
+    @keyframes fadeInUp {
+      from {
+        opacity: 0;
+        transform: translateY(30px);
+      }
+      to {
+        opacity: 1;
+        transform: translateY(0);
+      }
+    }
+  </style>
+</head>
+<body>
+  <div class="header">
+    <h1>Defence Planet</h1>
+  </div>
+
+  <div class="login-container">
+    <input type="text" id="username" placeholder="Enter your username" oninput="checkInput()" />
+    <br />
+    <button class="start-button" id="startBtn" onclick="startGame()">Start Game</button>
+  </div>
+
+  <div class="footer">
+    &copy; 2025 KahfiNuril - XI RPL
+  </div>
+
+  <script>
+    function checkInput() {
+      const input = document.getElementById("username").value.trim();
+      const startBtn = document.getElementById("startBtn");
+      startBtn.style.display = input.length > 0 ? "inline-block" : "none";
+    }
+
+    function startGame() {
+      const username = document.getElementById("username").value.trim();
+      if (username) {
+        localStorage.setItem("username", username);
+        window.location.href = "game.html";
+      }
+    }
+  </script>
+</body>
+</html>
